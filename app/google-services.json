@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "163262379302",
+    "project_id": "facebee-a3380",
+    "storage_bucket": "facebee-a3380.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163262379302:android:92bf615d9ee13ce542bde7",
+        "android_client_info": {
+          "package_name": "com.example.facebee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163262379302-n2jegmsaja09737j65p9ggrae1gl3uj0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.facebee",
+            "certificate_hash": "347c6f7a365d690124c82caf556dc1ba752ef2b0"
+          }
+        },
+        {
+          "client_id": "163262379302-b99e070kod9j4jj6vrhomh9vt8fnc4pc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQay9SREXLcjFwrMGLIU-T4T8hYhyaQgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163262379302-b99e070kod9j4jj6vrhomh9vt8fnc4pc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
