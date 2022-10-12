@@ -4,22 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/drawable/ic_baseline_timer.xml" value="0.133" />
+        <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/drawable/ic_more_vert.xml" value="0.1165" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.16298527443105756" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.190234375" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_classes.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_classes2.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_classes2.xml" value="0.2078804347826087" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_datetimepicker.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_forgotpw.xml" value="0.22644927536231885" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_groups.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_location.xml" value="0.2" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_register.xml" value="0.22644927536231885" />
+        <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/activity_update_attendance.xml" value="0.2078804347826087" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/class_items.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/class_items2.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/content_scrolling.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/custom_dialog.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/custom_dialog.xml" value="0.25" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/custom_dialog2.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/dialog_spinner.xml" value="0.105859375" />
         <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/layout/group_items.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/hitesh/AndroidStudioProjects/FaceBee/app/src/main/res/menu/menu_item.xml" value="0.2526041666666667" />
       </map>
     </option>
   </component>

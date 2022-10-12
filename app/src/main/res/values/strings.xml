@@ -5,6 +5,11 @@
         <item>Teacher</item>
         <item>Admin</item>
     </string-array>
+
+    <string-array name="attendance">
+        <item>Present</item>
+        <item>Absent</item>
+    </string-array>
     <string name="title_activity_groups">groups_activity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"

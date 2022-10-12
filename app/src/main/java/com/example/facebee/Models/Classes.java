@@ -3,7 +3,7 @@ package com.example.facebee.Models;
 public class Classes {
     private String class_name,attendance,class_number;
 
-    public Classes(String class_name,String attendance,String class_number){
+    public Classes(String class_name, String attendance, String class_number){
         this.class_name=class_name;
         this.attendance=attendance;
         this.class_number=class_number;

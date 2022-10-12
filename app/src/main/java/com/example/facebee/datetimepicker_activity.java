@@ -151,6 +151,7 @@ public class datetimepicker_activity extends AppCompatActivity implements DatePi
         generate_code.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Toast.makeText(getApplicationContext(),class_number,Toast.LENGTH_SHORT).show();
                 code=generate_randomCode();
                 String datetime=date.getText().toString()+" "+startTime.getText().toString()+"-"+endTime.getText().toString();
                 if(date.getText().toString().isEmpty()||startTime.getText().toString().isEmpty()||endTime.getText().toString().isEmpty()) {
@@ -187,10 +188,18 @@ public class datetimepicker_activity extends AppCompatActivity implements DatePi
 
                         @Override
                         public void onFinish() {
+                            firestore.collection("groups").document(group_id).collection("classes").document(class_number).update("window_open","No").addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(getApplicationContext(),"Window is closed",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             dialog.dismiss();
                             //Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_SHORT).show();
                         }
                     }.start();
+
+
 
                 }
             }
@@ -203,8 +212,7 @@ public class datetimepicker_activity extends AppCompatActivity implements DatePi
         map.put("class_name",datetime);
         map.put("code",code);
         map.put("class_number",class_number);
-        map.put("timestamp", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime()));
-
+        map.put("window_open","Yes");
 
         firestore.collection("groups").document(group_id).collection("classes").document(class_number).set(map);
         firestore.collection("groups").document(group_id).collection("students").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -213,21 +221,16 @@ public class datetimepicker_activity extends AppCompatActivity implements DatePi
                 for(QueryDocumentSnapshot documentSnapshot:queryDocumentSnapshots){
                     String id=documentSnapshot.getId();
                     Map<String,Object> map=new HashMap<>();
-                    map.put(class_number,false);
+                    map.put(class_number,"false");
                     firestore.collection("groups").document(group_id).collection("students").document(id).update(map);
 
 
                 }
             }
         });
-        final int[] number_of_classes = new int[1];
-        firestore.collection("groups").document(group_id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                number_of_classes[0] = (int) documentSnapshot.get("no_of_classes");
-            }
-        });
-        firestore.collection("groups").document(group_id).update("no_of_classes",number_of_classes[0]+1);
+
+
+        firestore.collection("groups").document(group_id).update("no_of_classes",class_number);
 
     }
 

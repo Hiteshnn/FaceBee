@@ -27,6 +27,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class groups_activity extends AppCompatActivity implements RecyclerViewClickInterface{
@@ -62,6 +63,7 @@ public class groups_activity extends AppCompatActivity implements RecyclerViewCl
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
                     group_ids=(ArrayList<String>)documentSnapshot.get("Groups");
+                    Collections.sort(group_ids);
                     username=(String)documentSnapshot.get("Username");
                     firestore.collection("groups").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @Override
@@ -104,8 +106,7 @@ public class groups_activity extends AppCompatActivity implements RecyclerViewCl
         if(role.equals("Student")) {
             Intent i = new Intent(getApplicationContext(), classes_activity.class);
             i.putExtra("username", username);
-           // i.putExtra("group_id", group_ids.get(position));
-            i.putExtra("group_id", "b8rPkDz95eagKZgwbvP4");
+            i.putExtra("group_id", group_ids.get(position));
             startActivity(i);
         }
         else{

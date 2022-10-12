@@ -17,7 +17,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         forgot_password=(TextView)findViewById(R.id.forgot_password);
         role=(Spinner)findViewById(R.id.l_role);
         login=(Button)findViewById(R.id.login_button);
+
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.role,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         role.setAdapter(adapter);
@@ -78,67 +82,48 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(username.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Type username",Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                if(username.getText().toString().isEmpty()||password.getText().toString().isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Type username and password",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    if(password.getText().toString().isEmpty()){
-                        Toast.makeText(getApplicationContext(),"Type password",Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        firestore.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                /*task.addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_SHORT).show();
-                                    }
-                                });*/
-                                if(task.isSuccessful()){
-                                    QueryDocumentSnapshot document1 = null;
-                                    for(QueryDocumentSnapshot document:task.getResult()){
-                                        if(username.getText().toString().equals(document.get("Username"))){
-                                            document1=document;
-                                            break;
-                                        }
-                                    }
-                                    if(document1==null){
-                                        Toast.makeText(getApplicationContext(),"Invalid username",Toast.LENGTH_SHORT).show();
-                                    }
-                                    else{
-                                        if(password.getText().toString().equals(document1.get("Password"))){
-                                            if(role.getSelectedItem().toString().equals(document1.get("Role"))){
-                                                Toast.makeText(getApplicationContext(),"Logged in successful",Toast.LENGTH_SHORT).show();
-                                                Intent j=new Intent(MainActivity.this,groups_activity.class);
-                                                j.putExtra("id",document1.getId());
-                                                j.putExtra("role",role.getSelectedItem().toString());
-                                                startActivity(j);
-                                            }
-                                            else{
-                                                Toast.makeText(getApplicationContext(),"Select the correct role",Toast.LENGTH_SHORT).show();
-                                            }
+                    firestore.collection("users").document(username.getText().toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(task.isSuccessful()){
+                                DocumentSnapshot doc=task.getResult();
+                                if(doc.exists()){
+                                    if(doc.get("Password").equals(password.getText().toString())){
+                                        if(doc.get("Role").equals(role.getSelectedItem().toString())){
+                                            //Toast.makeText(getApplicationContext(),"Logged in",Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(getApplicationContext(), groups_activity.class);
+                                            i.putExtra("id", username.getText().toString());
+                                            i.putExtra("role", role.getSelectedItem().toString());
+                                            startActivity(i);
                                         }
                                         else{
-                                            Toast.makeText(getApplicationContext(),"Invalid password",Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(),"Select correct role",Toast.LENGTH_SHORT).show();
                                         }
+                                    }
+                                    else{
+                                        Toast.makeText(getApplicationContext(),"Incorrect password",Toast.LENGTH_SHORT).show();
+
                                     }
                                 }
                                 else{
-                                   Toast.makeText(getApplicationContext(),"Unable to connect to server",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"No such username",Toast.LENGTH_SHORT).show();
 
                                 }
                             }
-                        });
-                    }
+                            else{
+                                Toast.makeText(getApplicationContext(),"Unable to connect to server",Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+                    });
                 }
-
-
             }
         });
-
-
 
     }
 
